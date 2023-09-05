@@ -1,0 +1,11 @@
+awk command is used to simpilfy the data from db tables like to see good format
+
+for example:-
+
+$ ps | awk '{print $1,$4}'
+
+$ awk -F ":" '{print $1}' etc/passwd
+
+finding particuler word in data
+
+$ awk '/nologin/{print}' /etc/passwd
