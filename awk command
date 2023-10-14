@@ -1,11 +1,61 @@
-awk command is used to simpilfy the data from db tables like to see good format
+The awk command is a versatile text-processing tool commonly used in Unix and Linux environments. It allows you to process text files and manipulate data in various ways. awk operates on a line-by-line basis, parsing each line into fields and providing a range of operations to perform on those fields. Here are some common awk command examples:
 
-for example:-
+1) Print specific columns:
 
-$ ps | awk '{print $1,$4}'
+bash
+Copy code
+$ awk '{print $1, $3}' filename.txt
+2) This command prints the first and third columns of each line in the filename.txt file.
 
-$ awk -F ":" '{print $1}' etc/passwd
+Filter lines based on a condition:
 
-finding particuler word in data
+bash
+Copy code
+$ awk '$3 > 50' data.txt
+ This command prints lines where the value in the third column is greater than 50.
 
-$ awk '/nologin/{print}' /etc/passwd
+3) Calculate the sum or average of a column:
+
+$ awk '{sum += $2} END {print "Sum:", sum; print "Average:", sum/NR}' data.txt
+This command calculates the sum and average of the values in the second column and prints the results at the end.
+
+4) Concatenate fields:
+
+$ awk '{print $1 $2}' data.txt
+This command concatenates the first and second fields without a space between them.
+
+5) Search and replace:
+
+$ awk '{gsub("old_string", "new_string"); print}' data.txt
+
+This command searches for "old_string" in each line and replaces it with "new_string" before printing the line.
+
+6) Print lines matching a specific pattern:
+
+$ awk '/pattern/' data.txt
+This command prints all lines that contain "pattern."
+
+7) Print the number of lines in a file:
+
+$ awk 'END {print NR}' data.txt
+
+This command prints the total number of lines in the data.txt file.
+8) Field separator customization:
+
+$ awk -F':' '{print $1, $3}' /etc/passwd
+
+This command uses a colon (:) as the field separator to print the first and third fields from the /etc/passwd file.
+
+9) Print lines between two patterns:
+
+awk '/start_pattern/, /end_pattern/' data.txt
+
+This command prints all lines between "start_pattern" and "end_pattern," inclusive.
+
+10) Count occurrences of a specific pattern in a file:
+
+$ awk '{count += gsub("pattern", "")} END {print "Count:", count}' data.txt
+
+This command counts and prints the number of occurrences of "pattern" in the file.
+
+
