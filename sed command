@@ -1,3 +1,55 @@
-sed command it is used to chnage the data in file
+The sed command, which stands for "stream editor," is a powerful text manipulation tool in Unix and Unix-like operating systems. It allows you to perform various operations on text files, including searching, replacing, inserting, deleting, and more. Here are some common sed command examples:
 
-sed -i 's/old-text/new-text/g' (file name)
+Basic Text Replacement:
+Replace all occurrences of "old" with "new" in a file:
+
+$ sed 's/old/new/g' input.txt > output.txt
+
+2)  In-Place Editing:
+Modify a file in place (without creating a new file):
+
+$ sed -i 's/old/new/g' input.txt
+
+3) Using Delimiters:
+You can use different delimiters instead of the default /:
+
+$ sed 's#old#new#g' input.txt
+
+4) Case Insensitive Replacement:
+Replace "old" with "new" case-insensitively:
+
+$ sed 's/old/new/gI' input.txt
+
+5) Print Line Numbers:
+Add line numbers to each line in a file:
+$ sed = input.txt | sed 'N; s/\n/\t/'
+
+6) Delete Lines:
+Delete lines containing a specific pattern:
+
+$ sed '/pattern/d' input.txt
+
+7) Print Specific Lines:
+Print only lines 5 to 10 from a file:
+
+$ sed -n '5,10p' input.txt
+
+8) Substitute Using Regular Expressions:
+Use regular expressions for more complex replacements. For example, to remove all digits from a file:
+
+$ sed 's/[0-9]//g' input.txt
+
+9) Multiple Operations:
+You can chain multiple sed commands together:
+
+$ sed -e 's/old/new/g' -e 's/another/thing/g' input.txt
+
+10) Print Matching Lines:
+Print only the lines that match a pattern:
+
+$ sed -n '/pattern/p' input.txt
+
+11) Read and Apply Commands from a File:
+You can store sed commands in a file and apply them using the -f option:
+
+$ sed -f script.sed input.txt
